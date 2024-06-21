@@ -5,7 +5,7 @@ import { COMMENT_POST } from "../../Api";
 import Error from "../Helper/Error";
 import "./PhotoCommentsForm.scss";
 
-const PhotoCommentsForm = ({ id, setComments }) => {
+const PhotoCommentsForm = ({ id, setComments, single }) => {
   const [comment, setComment] = useState("");
   const { request, error } = useFetch();
 
@@ -20,7 +20,10 @@ const PhotoCommentsForm = ({ id, setComments }) => {
   }
 
   return (
-    <form className="commentForm" onSubmit={handleSubmit}>
+    <form
+      className={`commentForm ${single ? "single" : ""}`}
+      onSubmit={handleSubmit}
+    >
       <textarea
         className="commentTextarea"
         id="commend"
